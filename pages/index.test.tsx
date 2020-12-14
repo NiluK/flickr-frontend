@@ -1,9 +1,9 @@
 import "@testing-library/jest-dom/extend-expect";
 import { render, waitFor } from "@testing-library/react";
 
-import Header from "./";
+import Home from "./";
 
-describe.only("59892259", () => {
+describe.only("<Home />", () => {
   let originFetch;
   beforeEach(() => {
     originFetch = (global as any).fetch;
@@ -18,7 +18,7 @@ describe.only("59892259", () => {
     const response = { json: jest.fn().mockResolvedValueOnce(mockData) };
     const mockedFetch = jest.fn().mockResolvedValueOnce(response as any);
     (global as any).fetch = mockedFetch;
-    render(<Header />);
+    render(<Home />);
     await waitFor(() => {
       expect(mockedFetch).toBeCalledTimes(1);
       expect(response.json).toBeCalledTimes(1);
@@ -37,7 +37,7 @@ describe.only("59892259", () => {
     const response = { json: jest.fn().mockResolvedValueOnce(mockData) };
     const mockedFetch = jest.fn().mockResolvedValueOnce(response as any);
     (global as any).fetch = mockedFetch;
-    const { getAllByTestId } = render(<Header />);
+    const { getAllByTestId } = render(<Home />);
     await waitFor(() => {
       expect(getAllByTestId("photo").length).toBe(20);
     });
